@@ -1,0 +1,28 @@
+{
+  "name": "secretsharingapp-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index",
+  "types": "index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfinityTech-zz/secretsharingapp-backend.git"
+  },
+  "author": "Subhasish Dey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InfinityTech-zz/secretsharingapp-backend/issues"
+  },
+  "homepage": "https://github.com/InfinityTech-zz/secretsharingapp-backend#readme",
+  "devDependencies": {
+    "express": "^4.19.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
