@@ -1,0 +1,1 @@
+module.exports.secretValidation = require('./secret.validation');

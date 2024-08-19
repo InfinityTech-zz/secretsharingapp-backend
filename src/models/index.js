@@ -1,0 +1,1 @@
+module.exports.Secrets = require('./secret.model');
