@@ -3,6 +3,17 @@ const { Secrets } = require('../models');
 const ApiError = require('../utils/ApiError');
 const Cryptr = require('cryptr');
 
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'phyllis.dubuque28@ethereal.email',
+        pass: 'jv1rUX6sSupjsHEsX5'
+    }
+});
+
 /**
  * Create a secret
  * @param {Object} secretBody
@@ -40,8 +51,25 @@ const deleteSecretById = async (secretId) => {
   return secret;
 };
 
+const sendEmail = async(email) => {
+    // send mail with defined transport object
+    console.log('send email hit');
+    const info = await transporter.sendMail({
+      from: '"Test Secret share App 👻" <secretshare@ethereal.email>', // sender address
+      to: email, // list of receivers
+      subject: "Secretpicked up", // Subject line
+      text: "Secret Picked up", // plain text body
+      html: "<b>Secret Picked up</b>", // html body
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+  }
+  
+
 module.exports = {
   createSecret,
   getSecretById,
   deleteSecretById,
+  sendEmail
 };
