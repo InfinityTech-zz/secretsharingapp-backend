@@ -4,6 +4,7 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { secretService } = require('../services');
 const moment = require('moment');
+const Cryptr = require('cryptr');
 
 const checkConnection = catchAsync(async (req, res) => {
     console.log('root hit');
@@ -33,6 +34,10 @@ const getSecret = catchAsync(async (req, res) => {
     await secretService.deleteSecretById(secret._id);
     res.status(400).send('Expired');
   }
+  await secretService.deleteSecretById(secret._id);
+  const cryptr = new Cryptr(secret.saltPhrase);
+  const decrypted = cryptr.decrypt(secret.secret);
+  secret.secret = decrypted;
   res.send(secret);
 });
 
